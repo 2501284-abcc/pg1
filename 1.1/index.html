@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>食事記録</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="container">
+    <h1>食事記録</h1>
+    <p class="sub">日付・時刻は自動入力。空欄チェックあり。ローカル保存対応。</p>
+  </header>
+
+  <main class="container">
+    <!-- 入力フォーム（フェーズ1） -->
+    <form id="mealForm" autocomplete="off">
+      <div class="row">
+        <label for="date">日付</label>
+        <input type="date" id="date" name="date" required />
+      </div>
+      <div class="row">
+        <label for="time">時刻</label>
+        <input type="time" id="time" name="time" required />
+      </div>
+      <div class="row">
+        <label for="type">区分</label>
+        <select id="type" name="type" required>
+          <option value="朝食">朝食</option>
+          <option value="昼食">昼食</option>
+          <option value="夕食">夕食</option>
+          <option value="間食">間食</option>
+        </select>
+      </div>
+      <div class="row">
+        <label for="name">メニュー</label>
+        <input type="text" id="name" name="name" placeholder="例：焼き魚定食" required />
+      </div>
+      <div class="row">
+        <label for="cal">カロリー(kcal)</label>
+        <input type="number" id="cal" name="cal" min="0" step="1" placeholder="例：680" required />
+      </div>
+      <div class="row">
+        <label for="memo">メモ</label>
+        <input type="text" id="memo" name="memo" placeholder="味・量・場所など（任意）" />
+      </div>
+      <div class="actions">
+        <button type="submit" id="addBtn">追加</button>
+        <!-- 任意: 全削除（発展10用） -->
+        <!-- <button type="button" id="clearAllBtn" class="danger">全削除</button> -->
+      </div>
+    </form>
+
+    <!-- 件数・サマリー（フェーズ9：件数表示） -->
+    <section class="summary">
+      <span id="count">0件</span>
+    </section>
+
+    <!-- 一覧（フェーズ4/7：表示・初期表示） -->
+    <section>
+      <ul id="list" class="list"></ul>
+      <p id="emptyMsg" class="muted" style="display:none;">まだ記録がありません。</p>
+    </section>
+  </main>
+
+  <footer class="container muted">
+    <small>保存先：ブラウザの localStorage（デバイス内）</small>
+  </footer>
+
+  <script src="script/app.js"></script>
+  <small>2501284武藤　佑季</small>
+</body>
+</html>
+``
